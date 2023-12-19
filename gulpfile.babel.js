@@ -7,7 +7,7 @@ import {load as yamlLoad} from "yaml-js";
 import generator from "@antora/site-generator-default";
 import browserSync from "browser-sync";
 
-const filename = "rh1-site.yml";
+const filename = "dev-site.yml";
 const server = browserSync.create();
 const args = ["--playbook", filename];
 
@@ -20,7 +20,7 @@ function watchGlobs() {
     `${source.url}/**/**.adoc`,
     `${source.url}/**/**.hbs`
   ]); 
-  dirs.push(["rh1-site.yml"]);
+  dirs.push(["dev-site.yml"]);
   dirs = [].concat(...dirs);
   //console.log(dirs);
   return dirs;
@@ -28,7 +28,7 @@ function watchGlobs() {
 
 const siteWatch = () => watch(watchGlobs(), series(build, reload));
 
-const removeSite = done => remove("www", done);
+const removeSite = done => remove("gh-pages", done);
 const removeCache = done => remove(".cache", done);
 
 function build(done) {
@@ -43,7 +43,7 @@ function build(done) {
 }
 
 function workshopSite(done){
-  generator(["--pull", "--stacktrace","--playbook","rh1-site.yaml"], process.env)
+  generator(["--pull", "--stacktrace","--playbook","workshop-site.yaml"], process.env)
     .then(() => {
       done();
     })
@@ -61,7 +61,7 @@ function reload(done) {
 function serve(done) {
   server.init({
     server: {
-      baseDir: "./www"
+      baseDir: "./gh-pages"
     }
   });
   done();
