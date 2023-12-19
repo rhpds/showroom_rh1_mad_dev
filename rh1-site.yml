@@ -2,21 +2,13 @@
 site:
   title: Module CHS - Migration to EAP
   url: https://redhat-scholars.github.io/course-template
-  #start_page: modules::index.adoc
-  start_page: modules::1-introduction.adoc
+  start_page: modules::index.adoc
+  # start_page: modules::1-introduction.adoc
 
 content:
   sources:
     - url: ./
       start_path: content
-
-# asciidoc:
-#   attributes:
-#     release-version: master
-#     page-pagination: true
-#   extensions:
-#     - ./content/supplemental-ui/lib/tab-block.js
-#     - ./content/supplemental-ui/lib/remote-include-processor.js
 
 ui:
   bundle:
