@@ -23,4 +23,4 @@ ui:
     snapshot: true
   supplemental_files: ./content/supplemental-ui
 output:
-  dir: ./gh-pages
+  dir: ./www
